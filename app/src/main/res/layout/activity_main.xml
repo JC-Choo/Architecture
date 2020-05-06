@@ -5,12 +5,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".controller.MainActivity">
+    tools:context=".view.MainActivity">
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:text="@string/mvc"
+        android:text="@string/mvp"
         android:textSize="20sp"
         android:gravity="center"/>
 

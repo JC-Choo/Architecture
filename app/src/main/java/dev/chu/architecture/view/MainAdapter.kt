@@ -1,4 +1,4 @@
-package dev.chu.architecture.controller
+package dev.chu.architecture.view
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

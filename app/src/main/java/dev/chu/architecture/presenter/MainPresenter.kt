@@ -1,41 +1,24 @@
-package dev.chu.architecture.controller
+package dev.chu.architecture.presenter
 
-import android.content.Context
-import androidx.appcompat.app.AppCompatActivity
-import android.os.Bundle
 import android.util.Log
-import android.widget.Toast
-import androidx.recyclerview.widget.RecyclerView
 import com.google.gson.GsonBuilder
 import com.google.gson.JsonObject
 import com.google.gson.reflect.TypeToken
-import dev.chu.architecture.R
-import dev.chu.architecture.data.Api
+import dev.chu.architecture.MainContract
 import dev.chu.architecture.data.ApiService
 import dev.chu.architecture.model.GithubRepos
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class MainActivity : AppCompatActivity() {
-    private val TAG = MainActivity::class.java.simpleName
+class MainPresenter(
+    private val view: MainContract.View,
+    private val api: ApiService
+) : MainContract.Presenter {
 
-    private lateinit var mainRv: RecyclerView
-    private lateinit var mainAdapter: MainAdapter
-    private lateinit var api: ApiService
+    private val TAG = MainPresenter::class.java.simpleName
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-
-        mainRv = findViewById(R.id.main_rv)
-        mainAdapter = MainAdapter { repo ->
-            val text = "${repo.id} - ${repo.name} - ${repo.language}"
-            Toast.makeText(this, text, Toast.LENGTH_SHORT).show()
-        }
-        api = Api().createService(ApiService::class.java)
-        mainRv.adapter = mainAdapter
-
+    override fun load() {
         api.getRepositories()
             .enqueue(object : Callback<JsonObject> {
                 override fun onFailure(call: Call<JsonObject>, t: Throwable) {
@@ -50,11 +33,12 @@ class MainActivity : AppCompatActivity() {
                         val type = object : TypeToken<List<GithubRepos>>() {}.type
                         val result = GsonBuilder().create().fromJson<List<GithubRepos>>(data, type)
 
-                        mainAdapter.setNewItems(result)
+                        view.notifyDataChanged(result)
                     } else {
                         Log.i(TAG, "not success")
                     }
                 }
             })
     }
+
 }
