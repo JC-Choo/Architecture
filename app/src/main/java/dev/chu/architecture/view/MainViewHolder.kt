@@ -23,6 +23,6 @@ class MainViewHolder(view: View): RecyclerView.ViewHolder(view) {
         tvLanguage.text = item.language
         tvTime.text = item.updatedAt.toString().split("GMT")[0]
 
-        callback(item)
+        itemView.setOnClickListener { callback(item) }
     }
 }
