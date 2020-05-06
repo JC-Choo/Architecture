@@ -19,11 +19,13 @@ class MainPresenter(
     private val TAG = MainPresenter::class.java.simpleName
 
     override fun load() {
+        view.showProgress()
         api.getRepositories()
             .enqueue(object : Callback<JsonObject> {
                 override fun onFailure(call: Call<JsonObject>, t: Throwable) {
                     Log.e(TAG, "fail")
                     t.printStackTrace()
+                    view.hideProgress()
                 }
 
                 override fun onResponse(call: Call<JsonObject>, response: Response<JsonObject>) {
@@ -37,6 +39,7 @@ class MainPresenter(
                     } else {
                         Log.i(TAG, "not success")
                     }
+                    view.hideProgress()
                 }
             })
     }

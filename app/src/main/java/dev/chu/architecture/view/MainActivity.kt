@@ -1,6 +1,8 @@
 package dev.chu.architecture.view
 
 import android.os.Bundle
+import android.view.View
+import android.widget.ProgressBar
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
@@ -15,6 +17,8 @@ class MainActivity : AppCompatActivity(), MainContract.View {
     private val TAG = MainActivity::class.java.simpleName
 
     private lateinit var mainRv: RecyclerView
+    private lateinit var mainPb: ProgressBar
+
     private lateinit var mainAdapter: MainAdapter
     private lateinit var presenter: MainContract.Presenter
 
@@ -23,6 +27,8 @@ class MainActivity : AppCompatActivity(), MainContract.View {
         setContentView(R.layout.activity_main)
 
         mainRv = findViewById(R.id.main_rv)
+        mainPb = findViewById(R.id.main_pb)
+
         mainAdapter = MainAdapter { repo ->
             val text = "${repo.id} - ${repo.name} - ${repo.language}"
             Toast.makeText(this, text, Toast.LENGTH_SHORT).show()
@@ -36,5 +42,13 @@ class MainActivity : AppCompatActivity(), MainContract.View {
 
     override fun notifyDataChanged(repos: List<GithubRepos>) {
         mainAdapter.setNewItems(repos)
+    }
+
+    override fun showProgress() {
+        mainPb.visibility = View.VISIBLE
+    }
+
+    override fun hideProgress() {
+        mainPb.visibility = View.GONE
     }
 }

@@ -9,5 +9,7 @@ interface MainContract {
 
     interface View {
         fun notifyDataChanged(repos: List<GithubRepos>)
+        fun showProgress()
+        fun hideProgress()
     }
 }
