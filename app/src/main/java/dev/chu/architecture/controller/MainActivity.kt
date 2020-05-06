@@ -4,6 +4,8 @@ import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.View
+import android.widget.ProgressBar
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.google.gson.GsonBuilder
@@ -21,6 +23,8 @@ class MainActivity : AppCompatActivity() {
     private val TAG = MainActivity::class.java.simpleName
 
     private lateinit var mainRv: RecyclerView
+    private lateinit var mainPb: ProgressBar
+
     private lateinit var mainAdapter: MainAdapter
     private lateinit var api: ApiService
 
@@ -29,6 +33,8 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         mainRv = findViewById(R.id.main_rv)
+        mainPb = findViewById(R.id.main_pb)
+
         mainAdapter = MainAdapter { repo ->
             val text = "${repo.id} - ${repo.name} - ${repo.language}"
             Toast.makeText(this, text, Toast.LENGTH_SHORT).show()
@@ -36,11 +42,13 @@ class MainActivity : AppCompatActivity() {
         api = Api().createService(ApiService::class.java)
         mainRv.adapter = mainAdapter
 
+        mainPb.visibility = View.VISIBLE
         api.getRepositories()
             .enqueue(object : Callback<JsonObject> {
                 override fun onFailure(call: Call<JsonObject>, t: Throwable) {
                     Log.e(TAG, "fail")
                     t.printStackTrace()
+                    mainPb.visibility = View.GONE
                 }
 
                 override fun onResponse(call: Call<JsonObject>, response: Response<JsonObject>) {
@@ -54,6 +62,7 @@ class MainActivity : AppCompatActivity() {
                     } else {
                         Log.i(TAG, "not success")
                     }
+                    mainPb.visibility = View.GONE
                 }
             })
     }
