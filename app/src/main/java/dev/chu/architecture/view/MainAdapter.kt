@@ -1,11 +1,10 @@
-package dev.chu.architecture.controller
+package dev.chu.architecture.view
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import dev.chu.architecture.R
 import dev.chu.architecture.model.GithubRepos
-import dev.chu.architecture.view.MainViewHolder
 
 class MainAdapter(private val callback:(GithubRepos) -> Unit): RecyclerView.Adapter<MainViewHolder>() {
 

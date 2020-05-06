@@ -1,4 +1,4 @@
-package dev.chu.architecture.data
+package dev.chu.architecture.data.remote
 
 import com.google.gson.JsonObject
 import retrofit2.Call

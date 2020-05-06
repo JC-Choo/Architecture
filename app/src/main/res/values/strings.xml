@@ -1,4 +1,4 @@
 <resources>
     <string name="app_name">Architecture</string>
-    <string name="mvc">MVC Architecture</string>
+    <string name="mvvm">MVVM Architecture</string>
 </resources>

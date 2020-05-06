@@ -1,4 +1,4 @@
-package dev.chu.architecture.data
+package dev.chu.architecture.data.remote
 
 import dev.chu.architecture.BuildConfig
 import okhttp3.OkHttpClient
