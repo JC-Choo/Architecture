@@ -2,7 +2,7 @@ package dev.chu.architecture.java;
 
 import dagger.Module;
 import dagger.Provides;
-import dev.chu.architecture.Person;
+import dev.chu.architecture.entity.Person;
 
 @Module
 public class MyModule {

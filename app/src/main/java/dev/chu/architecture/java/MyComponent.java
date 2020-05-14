@@ -1,7 +1,7 @@
 package dev.chu.architecture.java;
 
 import dagger.Component;
-import dev.chu.architecture.Person;
+import dev.chu.architecture.entity.Person;
 
 @Component(modules = MyModule.class)
 //@Component(modules = {MyModule.class, ModuleB.class})

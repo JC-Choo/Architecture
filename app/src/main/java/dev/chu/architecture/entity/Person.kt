@@ -1,4 +1,4 @@
-package dev.chu.architecture
+package dev.chu.architecture.entity
 
 import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize

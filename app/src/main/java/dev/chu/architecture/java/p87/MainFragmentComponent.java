@@ -2,7 +2,6 @@ package dev.chu.architecture.java.p87;
 
 import dagger.BindsInstance;
 import dagger.Subcomponent;
-import dev.chu.architecture.MainFragment;
 import dev.chu.architecture.etc.FragmentScope;
 
 @FragmentScope
