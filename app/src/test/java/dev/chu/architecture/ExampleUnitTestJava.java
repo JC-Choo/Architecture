@@ -2,6 +2,7 @@ package dev.chu.architecture;
 
 import org.junit.Test;
 
+import dagger.MembersInjector;
 import dev.chu.architecture.java.DaggerMyComponent;
 import dev.chu.architecture.java.MyClass;
 import dev.chu.architecture.java.MyComponent;
@@ -24,21 +25,22 @@ public class ExampleUnitTestJava {
 
 //        MyComponent myComponent = DaggerMyComponent.builder().build();
         MyComponent myComponent = DaggerMyComponent.create();
-        System.out.println("java : result = "+myComponent.getString());
-        System.out.println("java : result = "+myComponent.getInt());
-        System.out.println("java : result = "+myComponent.getPerson());
+//        System.out.println("java : result = "+myComponent.getString());
+//        System.out.println("java : result = "+myComponent.getAge());
+//        System.out.println("java : result = "+myComponent.getPerson());
 //        System.out.println("java : result = "+myComponent.getA());
 //        System.out.println("java : result = "+myComponent.getB());
-//
-//        MyClass myClass1 = new MyClass();
-//        String str = myClass1.getStr();
+
+        MyClass myClass1 = new MyClass();
+        String str = myClass1.getStr();
+        assertNull("조회 결과 null", str);   // null이 아님을 확인
+
+        MembersInjector<MyClass> injector = myComponent.getInjector();
+        injector.injectMembers(myClass1);
+        str = myClass1.getStr();
 //        System.out.println("str = "+str);
-//        assertNull("조회 결과 null", str);   // null이 아님을 확인
-//        myComponent.inject(myClass1);
-//        str = myClass1.getStr();
-//        System.out.println("str = "+str);
-//        assertEquals("hello world", str);   // str = "hello world"
-//
+        assertEquals("hello world", str);   // str = "hello world"
+
 //        MyClass myClass2 = new MyClass();
 //        int age = myClass2.getAge();
 //        System.out.println("age = "+age);

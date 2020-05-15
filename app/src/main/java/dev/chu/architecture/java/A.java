@@ -1,8 +1,8 @@
 package dev.chu.architecture.java;
 
-class A {
+public class A {
 
-    A() {
+    public A() {
         System.out.println("A class");
     }
 

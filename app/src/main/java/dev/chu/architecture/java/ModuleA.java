@@ -6,7 +6,7 @@ import dagger.Provides;
 @Module
 public class ModuleA {
     @Provides
-    A provideB() {
+    A provideA() {
         return new A();
     }
 }

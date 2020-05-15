@@ -1,9 +1,7 @@
 package dev.chu.architecture
 
-import dev.chu.architecture.java.PersonB
-import dev.chu.architecture.kotlin.DaggerMyComponent
-import dev.chu.architecture.kotlin.DaggerPersonComponent
-import org.junit.Assert.assertEquals
+import dev.chu.architecture.kotlin.p50.DaggerFamilyComponent
+import dev.chu.architecture.kotlin.p50.Self
 import org.junit.Test
 
 /**
@@ -16,15 +14,38 @@ class ExampleUnitTest {
     fun addition_isCorrect() {
 //        val myComponent = DaggerMyComponent.builder().build()
 //        val myComponent = DaggerMyComponent.create()
+//        println("kotlin : result = " + myComponent.getName())
+//        println("kotlin : result = " + myComponent.getAge())
+//        println("kotlin : result = " + myComponent.getPerson())
+
 //        println("kotlin : result = " + myComponent.getString())
+//        println("kotlin : result = " + myComponent.getDouble())
 
-        val personComponent = DaggerPersonComponent.create()
-        val personA = personComponent.getPersonA()
-        println(personA.name + " : "+ personA.age)
+//        val myClass = MyClass()
+//        var str = myClass.str
+//        assertNotNull("조회 결과 null", str)
+//        myComponent.inject(myClass)
+//        str = myClass.str
+//        assertEquals("Chu", str)
 
-        val personB = PersonB()
-        personComponent.inject(personB)
-        assertEquals("Chu", personB.name)
-        assertEquals(100, personB.age)
+
+//        val personComponent = DaggerPersonComponent.create()
+//
+//        val personA = personComponent.getPersonA
+//        println(personA.name + " : "+ personA.age)
+//
+//        val personB = PersonB()
+//        personComponent.inject(personB)
+//        assertEquals("Chu", personB.name)
+//        assertEquals(100, personB.age)
+
+
+        val component = DaggerFamilyComponent.create()
+
+        val b = Self()
+
+//        component.inject(a)
+        component.inject(b)
+//        component.inject(c)
     }
 }

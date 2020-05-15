@@ -1,4 +1,4 @@
-package dev.chu.architecture.kotlin
+package dev.chu.architecture.kotlin.p47
 
 import dagger.Module
 import dagger.Provides
