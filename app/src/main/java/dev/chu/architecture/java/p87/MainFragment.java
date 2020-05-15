@@ -20,10 +20,10 @@ import dagger.android.support.AndroidSupportInjection;
 import dagger.android.support.DaggerFragment;
 import dev.chu.architecture.R;
 
-public class MainFragment extends Fragment {
+//public class MainFragment extends Fragment {
 
 // 2. ContributesAndroidInjector 사용
-//public class MainFragment extends DaggerFragment {
+public class MainFragment extends DaggerFragment {
 
     private String TAG = MainFragment.class.getSimpleName();
 
@@ -70,7 +70,6 @@ public class MainFragment extends Fragment {
 
     @Override
     public void onAttach(@NonNull Context context) {
-        AndroidSupportInjection.inject(this);
         Log.e("MainFragment", appString);
         Log.e("MainFragment", activityString);
         Log.e("MainFragment", fragmentString);

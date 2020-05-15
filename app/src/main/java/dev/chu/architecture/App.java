@@ -29,33 +29,33 @@ import dev.chu.architecture.java.p87.DaggerAppComponent;
 
 // 1. 보일러 플레이트 코드 제거
 
-public class App extends Application implements HasAndroidInjector {
-
-    @Inject
-    DispatchingAndroidInjector<Object> dispatchingAndroidInjector;
-
-    @Override
-    public void onCreate() {
-        super.onCreate();
-        DaggerAppComponent.factory()
-                .create(this)
-                .inject(this);
-    }
-
-    @Override
-    public AndroidInjector<Object> androidInjector() {
-        return dispatchingAndroidInjector;
-    }
-
-}
-
-// 2. ContributesAndroidInjector 사용
-
-//public class App extends DaggerApplication {
+//public class App extends Application implements HasAndroidInjector {
+//
+//    @Inject
+//    DispatchingAndroidInjector<Object> dispatchingAndroidInjector;
 //
 //    @Override
-//    protected AndroidInjector<? extends DaggerApplication> applicationInjector() {
-//        return DaggerAppComponent.factory().create(this);
+//    public void onCreate() {
+//        super.onCreate();
+//        DaggerAppComponent.factory()
+//                .create(this)
+//                .inject(this);
+//    }
+//
+//    @Override
+//    public AndroidInjector<Object> androidInjector() {
+//        return dispatchingAndroidInjector;
 //    }
 //
 //}
+
+// 2. ContributesAndroidInjector 사용
+
+public class App extends DaggerApplication {
+
+    @Override
+    protected AndroidInjector<? extends DaggerApplication> applicationInjector() {
+        return DaggerAppComponent.factory().create(this);
+    }
+
+}

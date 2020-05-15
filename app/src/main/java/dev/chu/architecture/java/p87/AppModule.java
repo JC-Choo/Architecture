@@ -50,7 +50,7 @@ import dev.chu.architecture.etc.ActivityScope;
 //}
 
 // 2. ContributesAndroidInjector 사용
-// subComponent의 팩토리가 다른 method or class 를 상속하지 않을 때 사용
+// subComponent의 팩토리가 "다른 method or class 를 상속하지 않을 때" 사용
 // -> subComponent를 정의하는 코드를 대체
 // -> subComponent를 위한 보일러 플레이트 코드 줄이는 효과
 
