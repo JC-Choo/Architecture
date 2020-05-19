@@ -12,12 +12,24 @@ import dev.chu.architecture.kotlin.p71.Animal
 import dev.chu.architecture.kotlin.p71.DaggerMapKeyComponent
 import dev.chu.architecture.kotlin.p74.DaggerParentComponent
 import dev.chu.architecture.kotlin.p80.Cafe
+import dev.chu.architecture.kotlin.p84.DaggerComponentA
+import dev.chu.architecture.kotlin.p84.DaggerComponentB
 import junit.framework.Assert.assertNotNull
 import junit.framework.Assert.assertSame
 import org.junit.Assert
 import org.junit.Test
 
 class ExampleUnitTest {
+
+    @Test
+    fun testDependency() {
+        val foo = dev.chu.architecture.kotlin.p84.Foo()
+        val componentA = DaggerComponentA.create()
+        val componentB = DaggerComponentB.builder().componentA(componentA).build()
+        componentB.inject(foo)
+        println(foo.str)
+        println(foo.integer)
+    }
 
     @Test
     fun testCafe() {
