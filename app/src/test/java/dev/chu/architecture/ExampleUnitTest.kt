@@ -11,18 +11,12 @@ import dev.chu.architecture.kotlin.p67.Foo
 import dev.chu.architecture.kotlin.p71.Animal
 import dev.chu.architecture.kotlin.p71.DaggerMapKeyComponent
 import dev.chu.architecture.kotlin.p74.DaggerParentComponent
-import dev.chu.architecture.kotlin.p80.component.Cafe
+import dev.chu.architecture.kotlin.p80.Cafe
 import junit.framework.Assert.assertNotNull
 import junit.framework.Assert.assertSame
 import org.junit.Assert
 import org.junit.Test
 
-
-/**
- * Example local unit test, which will execute on the development machine (host).
- *
- * See [testing documentation](http://d.android.com/tools/testing).
- */
 class ExampleUnitTest {
 
     @Test
@@ -31,6 +25,9 @@ class ExampleUnitTest {
         println(cafe.orderCoffee())
         println(cafe.orderCoffee())
         println(cafe.orderCoffee())
+        println(cafe.orderAde())
+        println(cafe.orderAde())
+        println(cafe.orderAde())
     }
 
     @Test

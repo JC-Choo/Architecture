@@ -7,8 +7,14 @@ class PersonB {
     @Inject
     var name: String? = null  // 필드 주입
 
-    @JvmField
+    private var age = 0
+
+    // 메서드 주입
     @Inject
-    var age = 0     // 메서드 주입
+    fun setAge(age: Int) {
+        this.age = age
+    }
+
+    fun getAge() = age
 
 }

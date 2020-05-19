@@ -6,7 +6,7 @@ import dagger.MembersInjector;
 import dev.chu.architecture.java.DaggerMyComponent;
 import dev.chu.architecture.java.MyClass;
 import dev.chu.architecture.java.MyComponent;
-import dev.chu.architecture.kotlin.p80.component.Cafe;
+import dev.chu.architecture.kotlin.p80.Cafe;
 
 import static org.junit.Assert.*;
 
