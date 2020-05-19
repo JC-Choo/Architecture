@@ -8,6 +8,7 @@ import dagger.android.AndroidInjection
 import dagger.android.AndroidInjector
 import dagger.android.DispatchingAndroidInjector
 import dagger.android.HasAndroidInjector
+import dagger.android.support.DaggerAppCompatActivity
 import dev.chu.architecture.App
 import dev.chu.architecture.R
 import javax.inject.Inject
@@ -45,12 +46,14 @@ import javax.inject.Named
 //    fun getComponent(): MainActivityComponent = component
 //}
 
-// 보일러 플레이트 코드 제거
+// 2. 보일러 플레이트 코드 제거
 
-class MainActivity : AppCompatActivity(), HasAndroidInjector {
+//class MainActivity : AppCompatActivity(), HasAndroidInjector {
+//    @Inject
+//    lateinit var androidInjector: DispatchingAndroidInjector<Any>
 
-    @Inject
-    lateinit var androidInjector: DispatchingAndroidInjector<Any>
+// 3. @ContributesAndroidInjector 애노테이션 활용
+class MainActivity : DaggerAppCompatActivity() {
 
     @Inject
     @Named("app")
@@ -77,7 +80,7 @@ class MainActivity : AppCompatActivity(), HasAndroidInjector {
             .commit()
     }
 
-    override fun androidInjector(): AndroidInjector<Any> {
-        return androidInjector
-    }
+//    override fun androidInjector(): AndroidInjector<Any> {
+//        return androidInjector
+//    }
 }

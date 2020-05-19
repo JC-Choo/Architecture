@@ -9,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import dagger.android.support.AndroidSupportInjection
+import dagger.android.support.DaggerFragment
 import dev.chu.architecture.R
 import dev.chu.architecture.kotlin.p87.MainFragmentModule
 import javax.inject.Inject
@@ -48,10 +49,12 @@ import javax.inject.Named
 //    }
 //}
 
-// 보일러 플레이트 코드 제거
+// 2. 보일러 플레이트 코드 제거
 
-class MainFragment : Fragment() {
+//class MainFragment : Fragment() {
 
+// 3. @ContributesAndroidInjector 애노테이션 활용
+class MainFragment : DaggerFragment() {
     @Inject
     @Named("app")
     lateinit var appString: String

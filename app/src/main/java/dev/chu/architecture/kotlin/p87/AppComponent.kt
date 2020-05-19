@@ -22,7 +22,8 @@ import javax.inject.Singleton
 //    }
 //}
 
-// 보일러 플레이트 코드 제거
+// 2. 보일러 플레이트 코드 제거
+// 3. @ContributesAndroidInjector 애노테이션 활용
 
 @Singleton
 @Component(modules = [AndroidInjectionModule::class, AppModule::class])
