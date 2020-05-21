@@ -64,9 +64,7 @@ class MainActivity : DaggerAppCompatActivity() {
     lateinit var activityString: String
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        AndroidInjection.inject(this)
-        // 호출 시 App으로부터 DispatchingAndroidInjector<Any>를 얻고 이를 통해 MainActivity에 맞는 AndroidInjector.Factory를 클래스 이름을 통해 찾는다.
-        // 팩토리를 통해 생성된 MainActivitySubcomponent 는 액티비티에서 호출한 inject() 를 통해 의존성 주입이 완료된다.
+//        AndroidInjection.inject(this)
         Log.e("MainActivity", appString)
         Log.e("MainActivity", activityString)
 

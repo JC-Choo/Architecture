@@ -68,7 +68,7 @@ class MainFragment : DaggerFragment() {
     lateinit var fragmentString: String
 
     override fun onAttach(context: Context) {
-        AndroidSupportInjection.inject(this)
+//        AndroidSupportInjection.inject(this)
         Log.e("MainFragment", appString)
         Log.e("MainFragment", activityString)
         Log.e("MainFragment", fragmentString)
