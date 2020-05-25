@@ -15,6 +15,7 @@ import dev.chu.myapplication.di.FragmentScope
 
 @Module
 class PostModule {
+
     // 데이터 바인딩 클래스 제공
     @Provides
     @FragmentScope

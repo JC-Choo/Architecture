@@ -11,7 +11,7 @@ import javax.inject.Inject
 /**
  * 게시 글 목록을 위한 Adapter
  */
-class PostAdapter @Inject constructor() : RecyclerView.Adapter<ViewBindingHolder<*>>() {
+class PostAdapter /* 생성자 인젝션 */ @Inject constructor() : RecyclerView.Adapter<ViewBindingHolder<*>>() {
 
     // 뷰 홀더용 뷰 모델 리스트 변수
     private val items: MutableList<PostItem> = ArrayList()

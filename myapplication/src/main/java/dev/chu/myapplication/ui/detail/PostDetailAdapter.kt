@@ -2,15 +2,17 @@ package dev.chu.myapplication.ui.detail
 
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import dev.chu.myapplication.BR
 import dev.chu.myapplication.R
 import dev.chu.myapplication.databinding.ViewPostDetailCommentBinding
 import dev.chu.myapplication.databinding.ViewPostDetailPostBinding
 import dev.chu.myapplication.databinding.ViewPostDetailUserBinding
 import dev.chu.myapplication.util.ViewBindingHolder
+import javax.inject.Inject
 
-class PostDetailAdapter(
-    private val items: MutableList<PostDetailItem>
-) : RecyclerView.Adapter<ViewBindingHolder<*>>() {
+class PostDetailAdapter @Inject constructor() : RecyclerView.Adapter<ViewBindingHolder<*>>() {
+
+    private val items: MutableList<PostDetailItem> = ArrayList()
 
     fun setNewItems(items: List<PostDetailItem>) {
         this.items.clear()

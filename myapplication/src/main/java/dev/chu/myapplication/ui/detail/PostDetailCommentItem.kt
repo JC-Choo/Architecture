@@ -6,9 +6,9 @@ class PostDetailCommentItem(
     private val comment: Comment
 ) : PostDetailItem() {
 
-    fun getName() = comment.name
+    val name: String get() = comment.name
 
-    fun getBody() = comment.body
+    val body: String get() = comment.body
 
     override fun getType(): Type {
         return Type.COMMENT

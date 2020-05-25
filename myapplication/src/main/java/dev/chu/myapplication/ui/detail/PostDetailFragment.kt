@@ -8,6 +8,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import dagger.Lazy
 import dagger.android.support.DaggerFragment
 import dev.chu.myapplication.databinding.FragmentPostDetailBinding
 import dev.chu.myapplication.di.AppViewModelFactory
@@ -19,19 +20,19 @@ import javax.inject.Inject
 
 class PostDetailFragment : DaggerFragment() {
     @Inject
-    private lateinit var binding: FragmentPostDetailBinding
+    lateinit var binding: FragmentPostDetailBinding
 
     @Inject
-    private lateinit var adapter: PostDetailAdapter
+    lateinit var adapter: PostDetailAdapter
 
     @Inject
-    private lateinit var layoutManager: LinearLayoutManager
+    lateinit var layoutManager: LinearLayoutManager
 
     @Inject
-    private lateinit var viewModelFactory: AppViewModelFactory
+    lateinit var viewModelFactory: AppViewModelFactory
 
     @Inject
-    private lateinit var navController: Lazy<NavController>
+    lateinit var navController: Lazy<NavController>
 
     private lateinit var viewModel: PostDetailViewModel
 
@@ -41,8 +42,12 @@ class PostDetailFragment : DaggerFragment() {
 
         if (savedInstanceState == null) {
             // Post 객체를 전달받는다.
-            val args: PostDetailFragmentArgs = PostDetailFragmentArgs.fromBundle(arguments)
-            viewModel.load(args.getPost())
+            arguments?.let {
+                val args: PostDetailFragmentArgs = PostDetailFragmentArgs.fromBundle(it)
+                viewModel.load(args.post)
+            } ?: run {
+                throw Exception("argument is null")
+            }
         }
     }
 
@@ -64,13 +69,10 @@ class PostDetailFragment : DaggerFragment() {
         viewModel.liveItems.observe(viewLifecycleOwner, Observer { items ->
             adapter.setNewItems(items)
         })
-        viewModel.userClickEvent.observe(
-            viewLifecycleOwner,
-            Observer { userId: Long? ->
-                navController.value.navigate(
-                    PostDetailFragmentDirections.actionPostDetailFragmentToUserFragment(userId)
-                )
-            }
-        )
+        viewModel.userClickEvent.observe(viewLifecycleOwner, Observer { userId: Long ->
+            navController.get().navigate(
+                PostDetailFragmentDirections.actionPostDetailFragmentToUserFragment(userId)
+            )
+        })
     }
 }

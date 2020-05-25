@@ -2,6 +2,7 @@ package dev.chu.myapplication
 
 import dagger.android.AndroidInjector
 import dagger.android.DaggerApplication
+import dev.chu.myapplication.di.DaggerAppComponent
 import timber.log.Timber
 
 class App : DaggerApplication() {

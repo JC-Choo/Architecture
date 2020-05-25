@@ -19,7 +19,6 @@ import timber.log.Timber
 import javax.inject.Inject
 import javax.inject.Named
 
-
 class PostDetailViewModel @Inject constructor(
     application: Application,
     userService: UserService,
@@ -63,8 +62,7 @@ class PostDetailViewModel @Inject constructor(
                     }
 
                     list
-                }
-            )
+                })
                 .retry(1)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())

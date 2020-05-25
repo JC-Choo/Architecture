@@ -2,15 +2,13 @@ package dev.chu.myapplication.ui.post
 
 import dev.chu.myapplication.data.entity.Post
 
-class PostItem constructor(
-    private val post: Post,
-    @JvmField private val eventListener: EventListener
+class PostItem(
+    val post: Post,
+    val eventListener: EventListener
 ) {
-    fun getPost(): Post = post
 
-    fun getTitle(): String = post.title
-
-    fun getEventListener(): EventListener = eventListener
+    val title: String
+        get() = post.title
 
     interface EventListener {
         fun onPostClick(postItem: PostItem)

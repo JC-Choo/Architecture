@@ -4,14 +4,14 @@ import dev.chu.myapplication.data.entity.User
 
 class PostDetailUserItem (
     val user: User,
-    @JvmField val eventListener: EventListener
+    val eventListener: EventListener
 ) : PostDetailItem() {
 
-    fun getName() = user.name
+    val name: String
+        get() = user.name
 
-    fun getUserId() = user.id
-
-    fun getEventListener() = eventListener
+    val userId: Long
+        get() = user.id
 
     override fun getType(): Type {
         return Type.USER

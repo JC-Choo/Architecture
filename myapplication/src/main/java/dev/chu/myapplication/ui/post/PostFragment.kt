@@ -8,6 +8,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import dagger.Lazy
 import dagger.android.support.DaggerFragment
 import dev.chu.myapplication.databinding.FragmentPostBinding
 import dev.chu.myapplication.di.AppViewModelFactory
@@ -22,15 +23,15 @@ class PostFragment: DaggerFragment() {
      * 오브젝트 그래프로부터 멤버 인젝션
      */
     @Inject
-    private lateinit var binding: FragmentPostBinding
+    lateinit var binding: FragmentPostBinding
     @Inject
-    private lateinit var viewModelFactory: AppViewModelFactory
+    lateinit var viewModelFactory: AppViewModelFactory
     @Inject
-    private lateinit var adapter: PostAdapter
+    lateinit var adapter: PostAdapter
     @Inject
-    private lateinit var layoutManager: LinearLayoutManager
+    lateinit var layoutManager: LinearLayoutManager
     @Inject
-    private lateinit var navController: Lazy<NavController>
+    lateinit var navController: Lazy<NavController>
 
     private lateinit var viewModel: PostViewModel
 
@@ -63,15 +64,16 @@ class PostFragment: DaggerFragment() {
         binding.recyclerView.layoutManager = layoutManager
         // 바인딩 클래스에 ViewModel 연결
         binding.viewModel = viewModel
+
         // ViewModel이 가진 게시 글 목록을 구독하여 Adapter에 반영
         viewModel.livePosts.observe(viewLifecycleOwner, Observer { list ->
             adapter.setItems(list)
         })
 
         // 게시 글이 클릭되었을 때 게시 글 상세 화면 목적지로 이동
-        viewModel.getPostClickEvent().observe(viewLifecycleOwner, Observer { postItem ->
-            navController.value.navigate(PostFragmentDirections
-                .actionPostFragmentToPostDetailFragment(postItem.getPost()))
+        viewModel.postClickEvent.observe(viewLifecycleOwner, Observer { postItem ->
+            navController.get().navigate(PostFragmentDirections
+                .actionPostFragmentToPostDetailFragment(postItem.post))
         })
     }
 }

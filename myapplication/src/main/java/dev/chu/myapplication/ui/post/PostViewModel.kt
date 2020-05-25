@@ -25,14 +25,16 @@ class PostViewModel @Inject constructor(
 
     // RecyclerView에 표현할 아이템들을 LiveData로 관리
     private val _livePosts: MutableLiveData<List<PostItem>> = MutableLiveData()
-    private val compositeDisposable: CompositeDisposable = CompositeDisposable()
-    private var _loading: MutableLiveData<Boolean> = MutableLiveData(true)
+    private val compositeDisposable = CompositeDisposable()
+    private var _loading = MutableLiveData(true)
 
     // 게시글 아이템 클릭 이벤트를 관리
-    private val _postClickEvent: SingleLiveEvent<PostItem> = SingleLiveEvent()
+    private val _postClickEvent = SingleLiveEvent<PostItem>()
 
     val livePosts: LiveData<List<PostItem>> get() = _livePosts
     val loading: LiveData<Boolean> get() = _loading
+    // PostFragment 로 postClickEvent 변수를 노출
+    val postClickEvent: LiveData<PostItem> get() = _postClickEvent
 
     init {
         Timber.d("PostViewModel created")
@@ -41,7 +43,9 @@ class PostViewModel @Inject constructor(
         this.errorEvent = errorEvent
     }
 
-    // 게시글 목록 불러오기
+    /**
+     * 게시글 목록 불러오기
+     */
     fun loadPosts() {
         compositeDisposable.add(postService.getPosts()
             .flatMapObservable {
@@ -57,7 +61,7 @@ class PostViewModel @Inject constructor(
 
     /**
      * ViewModel은 생명 주기를 알고 동작한다.
-     * 뷰 모델이 파괴될 때, RxJava의 Disposable 과 같은 리소스 등을 해제할 수 있또록 한다.
+     * 뷰 모델이 파괴될 때, RxJava의 Disposable 과 같은 리소스 등을 해제할 수 있도록 한다.
      */
     override fun onCleared() {
         super.onCleared()
@@ -69,9 +73,8 @@ class PostViewModel @Inject constructor(
      * PostItem 클릭 이벤트 구현
      */
     override fun onPostClick(postItem: PostItem) {
-        // Fragment로 이벤트를 전달하도록, SingleLiveEvent의 값을 변경한다.
+        // Fragment로 이벤트를 전달하도록,
+        // SingleLiveEvent의 값을 변경한다.
         _postClickEvent.value = postItem
     }
-    // PostFragment 로 postClickEvent 변수를 노출
-    fun getPostClickEvent(): SingleLiveEvent<PostItem> = _postClickEvent
 }

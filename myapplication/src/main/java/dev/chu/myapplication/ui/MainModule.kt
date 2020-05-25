@@ -11,8 +11,11 @@ import dev.chu.myapplication.di.ActivityContext
 import dev.chu.myapplication.di.ActivityScope
 import dev.chu.myapplication.di.FragmentScope
 import dev.chu.myapplication.ui.detail.PostDetailFragment
+import dev.chu.myapplication.ui.detail.PostDetailModule
 import dev.chu.myapplication.ui.post.PostFragment
 import dev.chu.myapplication.ui.post.PostModule
+import dev.chu.myapplication.ui.user.UserFragment
+import dev.chu.myapplication.ui.user.UserModule
 
 @Module
 abstract class MainModule {
@@ -30,12 +33,18 @@ abstract class MainModule {
         }
     }
 
-    // 서브 컴포넌트 정의
+    /**
+     * 서브 컴포넌트 정의
+     */
     @FragmentScope
     @ContributesAndroidInjector(modules = [PostModule::class])
     abstract fun getPostFragment(): PostFragment
 
     @FragmentScope
-    @ContributesAndroidInjector(modules = [PostDetailFragment::class])
+    @ContributesAndroidInjector(modules = [PostDetailModule::class])
     abstract fun getPostDetailFragment(): PostDetailFragment
+
+    @FragmentScope
+    @ContributesAndroidInjector(modules = [UserModule::class])
+    abstract fun getUserFragment(): UserFragment
 }

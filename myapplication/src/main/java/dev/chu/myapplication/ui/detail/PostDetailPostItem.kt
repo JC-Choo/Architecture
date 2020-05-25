@@ -6,9 +6,9 @@ class PostDetailPostItem(
     private val post: Post
 ) : PostDetailItem() {
 
-    fun getTitle() = post.title
+    val title: String get() = post.title
 
-    fun getBody() = post.body
+    val body: String get() = post.body
 
     override fun getType(): Type {
         return Type.POST

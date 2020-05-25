@@ -34,14 +34,4 @@ class AppModule {
     fun provideErrorEvent(): SingleLiveEvent<Throwable> {
         return SingleLiveEvent()
     }
-
-    @Provides
-    @Singleton
-    fun provideRetrofit(): Retrofit {
-        return Retrofit.Builder()
-            .baseUrl("https://jsonplaceholder.typicode.com/")
-            .addConverterFactory(GsonConverterFactory.create())
-            .addCallAdapterFactory(RxJava3CallAdapterFactory.create())
-            .build()
-    }
 }

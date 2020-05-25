@@ -27,18 +27,18 @@
         <argument
             android:name="post"
             app:argType="dev.chu.myapplication.data.entity.Post" />
-<!--        <action-->
-<!--            android:id="@+id/action_post_detail_fragment_to_userFragment"-->
-<!--            app:destination="@id/userFragment"-->
-<!--            app:enterAnim="@anim/nav_default_enter_anim"-->
-<!--            app:exitAnim="@anim/nav_default_exit_anim" />-->
+        <action
+            android:id="@+id/action_post_detail_fragment_to_userFragment"
+            app:destination="@id/userFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim" />
     </fragment>
-<!--    <fragment-->
-<!--        android:id="@+id/userFragment"-->
-<!--        android:name="com.charlezz.arch.ui.user.UserFragment"-->
-<!--        android:label="UserFragment">-->
-<!--        <argument-->
-<!--            android:name="userId"-->
-<!--            app:argType="long" />-->
-<!--    </fragment>-->
+    <fragment
+        android:id="@+id/userFragment"
+        android:name="dev.chu.myapplication.ui.user.UserFragment"
+        android:label="UserFragment">
+        <argument
+            android:name="userId"
+            app:argType="long" />
+    </fragment>
 </navigation>
