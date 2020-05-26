@@ -28,9 +28,10 @@ class PostAdapter /* 생성자 인젝션 */ @Inject constructor() : RecyclerView
         return ViewBindingHolder<ViewPostBinding>(parent.context, viewType)
     }
 
+    // 뷰 홀더와 뷰 모델을 바인딩한다.
     override fun onBindViewHolder(holder: ViewBindingHolder<*>, position: Int) {
-        holder.getBinding().setVariable(BR.item, items[position])
-        holder.getBinding().executePendingBindings()
+        holder.binding.setVariable(BR.item, items[position])
+        holder.binding.executePendingBindings()
     }
 
     // 게시글 목록 수

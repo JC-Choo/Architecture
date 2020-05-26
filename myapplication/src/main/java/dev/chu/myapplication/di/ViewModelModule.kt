@@ -15,6 +15,7 @@ abstract class ViewModelModule {
     @Binds
     abstract fun bindViewModelFactory(factory: AppViewModelFactory): ViewModelProvider.Factory
 
+    // 오브젝트 그래프에 멀티 바인딩하기 위한 코드
     @Binds
     @IntoMap
     @ViewModelKey(PostViewModel::class)

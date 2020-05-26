@@ -42,8 +42,8 @@ class PostDetailAdapter @Inject constructor() : RecyclerView.Adapter<ViewBinding
     }
 
     override fun onBindViewHolder(holder: ViewBindingHolder<*>, position: Int) {
-        holder.getBinding().setVariable(BR.item, items[position])
-        holder.getBinding().executePendingBindings()
+        holder.binding.setVariable(BR.item, items[position])
+        holder.binding.executePendingBindings()
     }
 
 }
