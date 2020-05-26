@@ -11,10 +11,10 @@ import javax.inject.Inject
 import javax.inject.Named
 
 // 멤버 인젝션을 하기 위해 DaggerAppCompatActivity를 상속한다.
-
 class MainActivity : DaggerAppCompatActivity() {
 
-    //바인딩 클래스 주입
+    // 바인딩 클래스 주입
+    // Lazy 인젝션을 하는 이유 : 액티비티 생성이 끝나기 전에 setContentView() 가 호출되면 안 되기 때문!
     @Inject
     lateinit var binding: Lazy<ActivityMainBinding>
 

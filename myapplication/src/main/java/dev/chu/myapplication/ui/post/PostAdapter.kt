@@ -16,6 +16,13 @@ class PostAdapter /* 생성자 인젝션 */ @Inject constructor() : RecyclerView
     // 뷰 홀더용 뷰 모델 리스트 변수
     private val items: MutableList<PostItem> = ArrayList()
 
+    // 외부로부터 게시글 목록을 받아서 UI를 갱신한다.
+    fun setItems(items: List<PostItem>?) {
+        this.items.clear()
+        this.items.addAll(items!!)
+        notifyDataSetChanged()
+    }
+
     // 뷰 홀더 생성
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewBindingHolder<*> {
         return ViewBindingHolder<ViewPostBinding>(parent.context, viewType)
@@ -26,20 +33,13 @@ class PostAdapter /* 생성자 인젝션 */ @Inject constructor() : RecyclerView
         holder.getBinding().executePendingBindings()
     }
 
-    // 레이아웃 종류
-    override fun getItemViewType(position: Int): Int {
-        return R.layout.view_post
-    }
-
     // 게시글 목록 수
     override fun getItemCount(): Int {
         return items.size
     }
 
-    // 외부로부터 게시글 목록을 받아서 UI를 갱신한다.
-    fun setItems(items: List<PostItem>?) {
-        this.items.clear()
-        this.items.addAll(items!!)
-        notifyDataSetChanged()
+    // 레이아웃 종류
+    override fun getItemViewType(position: Int): Int {
+        return R.layout.view_post
     }
 }

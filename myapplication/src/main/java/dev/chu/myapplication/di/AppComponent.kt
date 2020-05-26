@@ -6,7 +6,6 @@ import dagger.android.support.AndroidSupportInjectionModule
 import dev.chu.myapplication.App
 import javax.inject.Singleton
 
-
 @Singleton
 @Component(
     modules = [
@@ -15,9 +14,9 @@ import javax.inject.Singleton
         AppModule::class    // 애플리케이션 스코프 모듈
     ]
 )
-//안드로이드 애플리케이션 컴포넌트 정의
+// 안드로이드 애플리케이션 컴포넌트 정의
 interface AppComponent : AndroidInjector<App> {
-    //안드로이드 애플리케이션 컴포넌트 팩토리 정의
+    // 안드로이드 애플리케이션 컴포넌트 팩토리 정의
     @Component.Factory
     abstract class Factory : AndroidInjector.Factory<App>
 }

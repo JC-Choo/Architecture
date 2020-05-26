@@ -12,7 +12,10 @@ import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Named
 import javax.inject.Singleton
 
-@Module(includes = [ViewModelModule::class, RetrofitModule::class])
+@Module(includes = [
+    ViewModelModule::class, // VieModelModule 을 애플리케이션 범위로 관리하도록 AppModule 에 포함
+    RetrofitModule::class
+])
 class AppModule {
     @Provides
     @Singleton

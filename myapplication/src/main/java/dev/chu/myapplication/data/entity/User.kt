@@ -9,8 +9,8 @@ data class User(
     var name: String,
     var username: String,
     var email: String,
-    var address: dev.chu.myapplication.data.entity.Address,
+    var address: Address,
     var phone: String,
     var website: String,
-    var company: dev.chu.myapplication.data.entity.Company
+    var company: Company
 ) : Parcelable

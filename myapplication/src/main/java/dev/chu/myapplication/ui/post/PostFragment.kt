@@ -18,18 +18,22 @@ import javax.inject.Inject
  * 게시 글 화면 구성하기
  * 멤버 인젝션을 위해 DaggerFragment 상속
  */
-class PostFragment: DaggerFragment() {
+class PostFragment : DaggerFragment() {
     /**
      * 오브젝트 그래프로부터 멤버 인젝션
      */
     @Inject
     lateinit var binding: FragmentPostBinding
+
     @Inject
     lateinit var viewModelFactory: AppViewModelFactory
+
     @Inject
     lateinit var adapter: PostAdapter
+
     @Inject
     lateinit var layoutManager: LinearLayoutManager
+
     @Inject
     lateinit var navController: Lazy<NavController>
 
@@ -40,7 +44,7 @@ class PostFragment: DaggerFragment() {
 
         // ViewModel 객체를 요청
         viewModel = ViewModelProvider(this, viewModelFactory)[PostViewModel::class.java]
-        if(savedInstanceState == null) {
+        if (savedInstanceState == null) {
             // 데이터 요청, 프래그먼트가 재생성되었을 때는 요청하지 않는다.
             viewModel.loadPosts()
         }
@@ -72,8 +76,9 @@ class PostFragment: DaggerFragment() {
 
         // 게시 글이 클릭되었을 때 게시 글 상세 화면 목적지로 이동
         viewModel.postClickEvent.observe(viewLifecycleOwner, Observer { postItem ->
-            navController.get().navigate(PostFragmentDirections
-                .actionPostFragmentToPostDetailFragment(postItem.post))
+            navController.get().navigate(
+                PostFragmentDirections.actionPostFragmentToPostDetailFragment(postItem.post)
+            )
         })
     }
 }

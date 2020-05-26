@@ -18,6 +18,7 @@
             app:enterAnim="@anim/nav_default_enter_anim"
             app:exitAnim="@anim/nav_default_exit_anim" />
     </fragment>
+
     <fragment
         android:id="@+id/post_detail_fragment"
         android:name="dev.chu.myapplication.ui.detail.PostDetailFragment"
@@ -33,10 +34,12 @@
             app:enterAnim="@anim/nav_default_enter_anim"
             app:exitAnim="@anim/nav_default_exit_anim" />
     </fragment>
+
     <fragment
         android:id="@+id/userFragment"
         android:name="dev.chu.myapplication.ui.user.UserFragment"
-        android:label="UserFragment">
+        android:label="fragment_user"
+        tools:layout="@layout/fragment_user">
         <argument
             android:name="userId"
             app:argType="long" />
