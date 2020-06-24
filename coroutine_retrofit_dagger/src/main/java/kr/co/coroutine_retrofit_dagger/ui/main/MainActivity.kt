@@ -15,6 +15,8 @@ import kr.co.coroutine_retrofit_dagger.data.entity.Dog
 import kr.co.coroutine_retrofit_dagger.util.ImageLoader
 import javax.inject.Inject
 
+// https://medium.com/@shivamdhuria/learn-by-doing-coroutines-a-guide-for-using-coroutines-in-android-for-retrofit-requests-eaef6ca58c7e
+
 class MainActivity : DaggerAppCompatActivity() {
 
     @Inject

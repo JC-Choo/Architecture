@@ -10,6 +10,7 @@ import kr.co.coroutine_retrofit_dagger.data.entity.Dog
 import javax.inject.Inject
 import kotlin.coroutines.CoroutineContext
 
+// https://medium.com/@shivamdhuria/learn-by-doing-coroutines-a-guide-for-using-coroutines-in-android-for-retrofit-requests-eaef6ca58c7e
 class MainRepository @Inject constructor(private val service: ApiService) {
 
 //    suspend fun getBreedsList(): LiveData<Map<String, List<String>>> {
@@ -57,8 +58,7 @@ class MainRepository @Inject constructor(private val service: ApiService) {
     }
 
     suspend fun getTopTwoDogsAsync(): Status = withContext(Dispatchers.IO) {
-        //We need to move to background thread, "Dispatchers.IO" in this case as Network requests must always operate on
-        // background thread.
+        // We need to move to background thread, "Dispatchers.IO" in this case as Network requests must always operate on background thread.
         val list = mutableListOf<Dog>()
 //        logCoroutine("getTopTwoDogsAsync", coroutineContext)
 
