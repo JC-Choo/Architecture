@@ -2,8 +2,7 @@ package dev.chu.architecture.kotlin.p87
 
 import dagger.Module
 import dagger.Provides
-import dev.chu.architecture.etc.FragmentScope
-import java.util.*
+import dev.chu.architecture.di.FragmentScope
 import javax.inject.Named
 
 //@Module

@@ -1,4 +1,4 @@
-package dev.chu.architecture.etc;
+package dev.chu.architecture.di;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;

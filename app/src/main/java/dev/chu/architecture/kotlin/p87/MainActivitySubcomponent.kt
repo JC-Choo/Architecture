@@ -2,7 +2,7 @@ package dev.chu.architecture.kotlin.p87
 
 import dagger.Subcomponent
 import dagger.android.AndroidInjector
-import dev.chu.architecture.etc.ActivityScope
+import dev.chu.architecture.di.ActivityScope
 
 // 보일러 플레이트 코드 제거
 

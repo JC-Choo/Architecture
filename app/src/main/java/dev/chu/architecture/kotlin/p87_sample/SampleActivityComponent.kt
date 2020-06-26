@@ -2,7 +2,7 @@
 //
 //import dagger.BindsInstance
 //import dagger.Subcomponent
-//import dev.chu.architecture.etc.ActivityScope
+//import dev.chu.architecture.di.ActivityScope
 //
 //@Subcomponent(modules = [SampleActivityModule::class])
 //@ActivityScope

@@ -2,7 +2,7 @@
 //
 //import dagger.BindsInstance
 //import dagger.Subcomponent
-//import dev.chu.architecture.etc.FragmentScope
+//import dev.chu.architecture.di.FragmentScope
 //import dev.chu.architecture.java.p87.MainFragment
 //import dev.chu.architecture.kotlin.p87_sample.SampleFragment
 //

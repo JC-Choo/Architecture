@@ -2,7 +2,7 @@
 //
 //import dagger.Module
 //import dagger.Provides
-//import dev.chu.architecture.etc.ActivityScope
+//import dev.chu.architecture.di.ActivityScope
 //import dev.chu.architecture.java.p87.MainActivity
 //import dev.chu.architecture.kotlin.p87_sample.SampleActivity
 //import javax.inject.Named

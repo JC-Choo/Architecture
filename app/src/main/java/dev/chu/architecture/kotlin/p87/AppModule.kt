@@ -1,17 +1,9 @@
 package dev.chu.architecture.kotlin.p87
 
-import android.content.Context
-import android.content.SharedPreferences
-import dagger.Binds
 import dagger.Module
 import dagger.Provides
-import dagger.android.AndroidInjector
 import dagger.android.ContributesAndroidInjector
-import dagger.multibindings.ClassKey
-import dagger.multibindings.IntoMap
-import dev.chu.architecture.App
-import dev.chu.architecture.etc.ActivityScope
-import dev.chu.architecture.kotlin.p87.MainActivityComponent
+import dev.chu.architecture.di.ActivityScope
 import javax.inject.Named
 import javax.inject.Singleton
 

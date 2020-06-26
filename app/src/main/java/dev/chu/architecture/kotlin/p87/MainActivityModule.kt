@@ -1,15 +1,10 @@
 package dev.chu.architecture.kotlin.p87
 
-import dagger.Binds
 import dagger.Module
 import dagger.Provides
-import dagger.android.AndroidInjector
 import dagger.android.ContributesAndroidInjector
-import dagger.multibindings.ClassKey
-import dagger.multibindings.IntoMap
-import dev.chu.architecture.etc.ActivityScope
-import dev.chu.architecture.etc.FragmentScope
-import dev.chu.architecture.kotlin.p87.MainFragmentComponent
+import dev.chu.architecture.di.ActivityScope
+import dev.chu.architecture.di.FragmentScope
 import javax.inject.Named
 
 //@Module(subcomponents = [MainFragmentComponent::class])

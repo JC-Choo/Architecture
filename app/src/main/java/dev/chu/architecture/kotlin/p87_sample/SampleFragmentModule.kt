@@ -2,7 +2,7 @@
 //
 //import dagger.Module
 //import dagger.Provides
-//import dev.chu.architecture.etc.FragmentScope
+//import dev.chu.architecture.di.FragmentScope
 //import java.util.*
 //
 //@Module
