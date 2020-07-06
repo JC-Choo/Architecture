@@ -1,3 +1,4 @@
+include ':copy_ark_framework'
 include ':coroutine_retrofit_dagger'
 rootProject.name='Architecture'
 include ':app'
