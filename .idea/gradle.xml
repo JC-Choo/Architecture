@@ -11,7 +11,7 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
-            <option value="$PROJECT_DIR$/architecture86_106" />
+            <option value="$PROJECT_DIR$/architecture_dagger" />
             <option value="$PROJECT_DIR$/copy_ark_framework" />
             <option value="$PROJECT_DIR$/coroutine_retrofit_dagger" />
             <option value="$PROJECT_DIR$/myapplication" />
