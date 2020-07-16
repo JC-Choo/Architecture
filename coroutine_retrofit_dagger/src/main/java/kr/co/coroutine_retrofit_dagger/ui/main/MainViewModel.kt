@@ -46,12 +46,12 @@ class MainViewModel @Inject constructor(private val repository: MainRepository) 
             emit(topTwoDogsResult)
         }
     }
-
+ㅎ
     fun loadDogListAsync() {
         parentJob.cancelChildren()
         _dogList.value = emptyList()
         loadData {
-            _status.postValue("Loading...")
+            _status.postValue("Loading....")
             val start = System.currentTimeMillis()
             val result = runCatching { repository.getListDogsAsync() }
             result.onSuccess {
