@@ -46,7 +46,7 @@ class MainViewModel @Inject constructor(private val repository: MainRepository) 
             emit(topTwoDogsResult)
         }
     }
-ㅎ
+
     fun loadDogListAsync() {
         parentJob.cancelChildren()
         _dogList.value = emptyList()
