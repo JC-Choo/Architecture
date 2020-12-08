@@ -1,0 +1,223 @@
+/**
+ * gradle 빌드 시 여러 모듈에서 동일한 dependency 또는 maven repository 가 있을 경우
+ * 아래 버전 정보를 사용하여 공유하도록 한다
+ **/
+
+ext.deps = [:]
+
+/* versions */
+def versions = [:]
+versions.activity = '1.1.0'
+versions.android_gradle_plugin = '4.0.0'
+versions.appcompat = "1.1.0"
+versions.arch_core = "2.1.0"
+versions.atsl_core = "1.2.0"
+versions.atsl_junit = "1.1.1"
+versions.atsl_rules = "1.2.0"
+versions.atsl_runner = "1.2.0"
+versions.atsl_uiautomator = "2.2.0"
+versions.benchmark = "1.0.0"
+versions.cardview = "1.0.0"
+versions.constraint_layout = "2.0.0-beta6"
+versions.core_ktx = "1.1.0"
+versions.collection_ktx = "1.1.0"
+versions.coroutines = "1.3.6"
+versions.dagger = "2.27"
+versions.espresso = "3.2.0"
+versions.fragment = "1.2.4"
+versions.glide = "4.11.0"
+versions.gson = "2.8.6"
+versions.junit = "4.12"
+versions.kotlin = "1.3.61"
+versions.leakcanary = "2.3"
+versions.lifecycle = "2.2.0"
+versions.lottie = "3.1.0"
+versions.material = "1.1.0"
+versions.mockito = "2.25.0"
+versions.mockito_inline = "2.25.0"
+versions.mockito_all = "1.10.19"
+versions.mockito_android = "2.25.0"
+versions.multidex = "2.0.1"
+versions.navigation = "2.2.2"
+versions.okhttp_logging_interceptor = "3.9.0"
+versions.paging = "2.1.1"
+versions.recyclerview = "1.1.0"
+versions.swiperefreshlayout = "1.0.0"
+versions.retrofit = "2.8.1"
+versions.robolectric = "4.2"
+versions.room = "2.2.3"
+versions.transition = "1.3.0"
+versions.truth = "1.0.1"
+versions.work = "2.3.0"
+
+ext.versions = versions
+
+/* dependency */
+def deps = [:]
+
+/* androidx */
+def androidx = [:]
+androidx.appcompat = "androidx.appcompat:appcompat:$versions.appcompat"
+androidx.activity_ktx = "androidx.activity:activity-ktx:$versions.activity"
+androidx.annotation = "androidx.annotation:annotation:$versions.annotations"
+androidx.multidex = "androidx.multidex:multidex:$versions.multidex"
+androidx.cardview = "androidx.cardview:cardview:$versions.cardview"
+androidx.constraint_layout = "androidx.constraintlayout:constraintlayout:$versions.constraint_layout"
+androidx.core_ktx = "androidx.core:core-ktx:$versions.core_ktx"
+androidx.collection_ktx = "androidx.collection:collection-ktx:$versions.collection_ktx"
+androidx.paging_ktx = "androidx.paging:paging-runtime-ktx:$versions.paging"
+androidx.recyclerview = "androidx.recyclerview:recyclerview:$versions.recyclerview"
+androidx.swiperefreshlayout = "androidx.swiperefreshlayout:swiperefreshlayout:$versions.swiperefreshlayout"
+androidx.transition = "androidx.transition:transition:$versions.transition"
+androidx.arch_core = [
+        runtime: "androidx.arch.core:core-runtime:$versions.arch_core",
+        testing: "androidx.arch.core:core-testing:$versions.arch_core"
+]
+androidx.fragment = [
+        runtime    : "androidx.fragment:fragment:$versions.fragment",
+        runtime_ktx: "androidx.fragment:fragment-ktx:$versions.fragment",
+        testing    : "androidx.fragment:fragment-testing:$versions.fragment"
+]
+androidx.lifecycle = [
+        lifecycle_extensions: "androidx.lifecycle:lifecycle-extensions:$versions.lifecycle",
+        runtime             : "androidx.lifecycle:lifecycle-runtime:$versions.lifecycle",
+        runtime_ktx         : "androidx.lifecycle:lifecycle-runtime-ktx:$versions.lifecycle",
+        common_java8        : "androidx.lifecycle:lifecycle-common-java8:$versions.lifecycle",
+        compiler            : "androidx.lifecycle:lifecycle-compiler:$versions.lifecycle",
+        viewmodel_ktx       : "androidx.lifecycle:lifecycle-viewmodel-ktx:$versions.lifecycle",
+        livedata_ktx        : "androidx.lifecycle:lifecycle-livedata-ktx:$versions.lifecycle"
+]
+androidx.navigation = [
+        runtime                  : "androidx.navigation:navigation-runtime:$versions.navigation",
+        runtime_ktx              : "androidx.navigation:navigation-runtime-ktx:$versions.navigation",
+        fragment                 : "androidx.navigation:navigation-fragment:$versions.navigation",
+        fragment_ktx             : "androidx.navigation:navigation-fragment-ktx:$versions.navigation",
+        testing                  : "androidx.navigation:navigation-testing:$versions.navigation",
+        ui                       : "androidx.navigation:navigation-ui:$versions.navigation",
+        ui_ktx                   : "androidx.navigation:navigation-ui-ktx:$versions.navigation",
+        dynamic_features_fargment: "androidx.navigation:navigation-dynamic-features-fragment:$versions.navigation"
+]
+androidx.room = [
+        runtime : "androidx.room:room-runtime:$versions.room",
+        compiler: "androidx.room:room-compiler:$versions.room",
+        rxjava2 : "androidx.room:room-rxjava2:$versions.room",
+        testing : "androidx.room:room-testing:$versions.room",
+]
+androidx.work = [
+        runtime    : "androidx.work:work-runtime:$versions.work",
+        testing    : "androidx.work:work-testing:$versions.work",
+        firebase   : "androidx.work:work-firebase:$versions.work",
+        runtime_ktx: "androidx.work:work-runtime-ktx:$versions.work"
+]
+androidx.espresso = [
+        core   : "androidx.test.espresso:espresso-core:$versions.espresso",
+        contrib: "androidx.test.espresso:espresso-contrib:$versions.espresso",
+        intents: "androidx.test.espresso:espresso-intents:$versions.espresso"
+]
+androidx.benchmark = [
+        junit4: "androidx.benchmark:benchmark-junit4:$versions.benchmark"
+]
+deps.androidx = androidx
+
+/* kotlin */
+deps.kotlin = [
+        stdlib : "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$versions.kotlin",
+        test   : "org.jetbrains.kotlin:kotlin-test-junit:$versions.kotlin",
+        allopen: "org.jetbrains.kotlin:kotlin-allopen:$versions.kotlin"
+]
+
+/* coroutines */
+deps.coroutines = [
+        core   : "org.jetbrains.kotlinx:kotlinx-coroutines-core:$versions.coroutines",
+        android: "org.jetbrains.kotlinx:kotlinx-coroutines-android:$versions.coroutines",
+        test   : "org.jetbrains.kotlinx:kotlinx-coroutines-test:$versions.coroutines",
+]
+
+/* dagger */
+deps.dagger = [
+        runtime          : "com.google.dagger:dagger:$versions.dagger",
+        android          : "com.google.dagger:dagger-android:$versions.dagger",
+        android_support  : "com.google.dagger:dagger-android-support:$versions.dagger",
+        compiler         : "com.google.dagger:dagger-compiler:$versions.dagger",
+        android_processor: "com.google.dagger:dagger-android-processor:$versions.dagger"
+]
+
+/* retrofit */
+deps.retrofit = [
+        runtime: "com.squareup.retrofit2:retrofit:$versions.retrofit",
+        gson   : "com.squareup.retrofit2:converter-gson:$versions.retrofit",
+        mock   : "com.squareup.retrofit2:retrofit-mock:$versions.retrofit"
+]
+
+/* glide */
+deps.glide = [
+        runtime            : "com.github.bumptech.glide:glide:$versions.glide",
+        compiler           : "com.github.bumptech.glide:compiler:$versions.glide",
+        okhttp3_integration: "com.github.bumptech.glide:okhttp3-integration:$versions.glide"
+]
+
+deps.google = [
+        gson    : "com.google.code.gson:gson:$versions.gson",
+        truth   : "com.google.truth:truth:$versions.truth",
+        material: "com.google.android.material:material:$versions.material"
+]
+
+deps.squareup = [
+        okhttp_logging_interceptor: "com.squareup.okhttp3:logging-interceptor:$versions.okhttp_logging_interceptor",
+        leakcanary                : "com.squareup.leakcanary:leakcanary-android:$versions.leakcanary"
+]
+
+deps.airbnb = [
+        lottie: "com.airbnb.android:lottie:$versions.lottie"
+]
+
+/* test */
+deps.atsl = [
+        core       : "androidx.test:core:$versions.atsl_core",
+        ext_junit  : "androidx.test.ext:junit:$versions.atsl_junit",
+        runner     : "androidx.test:runner:$versions.atsl_runner",
+        rules      : "androidx.test:rules:$versions.atsl_rules",
+        uiautomator: "androidx.test.uiautomator:uiautomator:$versions.atsl_uiautomator",
+        junit      : "junit:junit:$versions.junit",
+        robolectric: "org.robolectric:robolectric:$versions.robolectric"
+]
+
+/* mockito */
+deps.mockito = [
+        core   : "org.mockito:mockito-core:$versions.mockito",
+        inline : "org.mockito:mockito-inline:$versions.mockito_inline",
+        all    : "org.mockito:mockito-all:$versions.mockito_all",
+        android: "org.mockito:mockito-android:$versions.mockito_android"
+]
+
+ext.deps = deps
+
+/* build gradle plugin */
+ext.gradlePlugin = [
+        android             : "com.android.tools.build:gradle:$versions.android_gradle_plugin",
+        navigation_safe_args: "androidx.navigation:navigation-safe-args-gradle-plugin:$versions.navigation",
+        benchmark           : "androidx.benchmark:benchmark-gradle-plugin:$versions.benchmark",
+        kotlin              : "org.jetbrains.kotlin:kotlin-gradle-plugin:$versions.kotlin"
+]
+
+/* build_versions */
+ext.build_versions = [
+        min_sdk    : 21,
+        compile_sdk: 29,
+        target_sdk : 29,
+        build_tools: "29.0.3"
+]
+
+/* repository */
+
+static def addRepos(RepositoryHandler handler) {
+    handler.google()
+    handler.jcenter()
+    handler.mavenCentral()
+    handler.maven {
+        url "https://jitpack.io"
+        url 'https://oss.sonatype.org/content/repositories/snapshots'
+    }
+}
+
+ext.addRepos = this.&addRepos
